@@ -81,6 +81,8 @@ $("#search-button").on("click", function()  {
                         dataType: "json"
                     }).then(function(response){
                         for (var i = 0; i < 5; i++) {
+                        
+                        
                         console.log(response)
                         console.log(response.list[i].main.temp);         // FORECAST TEMP
                         console.log(response.list[i].main.humidity);     // HUMIDITY

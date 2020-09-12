@@ -44,15 +44,15 @@ in a "card" tyle style
 
 This section will only TWO areas hardcoded; a card for the main display & a div for the row of 5 day forecasts
 _____________________________________________________
-h1 - City / Date
+## h1 - City / Date
 
-h2 - Temperature: _____     in degrees
+## h2 - Temperature: _____     in degrees
 
-h2 - Humidity: _____    in percentage
+## h2 - Humidity: _____    in percentage
 
-h2 - Wind Speed: _____  in MPH
+## h2 - Wind Speed: _____  in MPH
 
-h2 - UV index: ______ stylized block display w/ numbers
+## h2 - UV index: ______ stylized block display w/ numbers
 ______________________________________________________
 
 5-Day Forecast:
