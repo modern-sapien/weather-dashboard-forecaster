@@ -72,6 +72,19 @@ $("#search-button").on("click", function()  {
                 console.log(response.current.weather[0].icon) // icon display
                 
                 
+                    $.ajax({
+                        url: "https://api.openweathermap.org/data/2.5/forecast?" + locationTot + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
+                        method: "GET", 
+                        dataType: "json"
+                    }).then(function(response){
+                        console.log(response.list[0].main.temp)
+                        console.log(response.list[0].main.humidity)
+                        console.log(response.list[0].weather.icon)
+                        console.log(response)
+                        console.log(response)
+                        console.log(response)
+                    });
+
 
             });
     });
@@ -84,6 +97,9 @@ $("#search-button").on("click", function()  {
 
 
 });
+
+    //  THIS IS THE URL for inputting the icon codes so they display
+    // http://openweathermap.org/img/wn/10d@2x.png
 
 
         // GOING TO SEE IF THIS WORKS WITH THE LATITUDE SEARCH
