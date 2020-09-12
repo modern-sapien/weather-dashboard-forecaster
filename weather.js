@@ -17,9 +17,8 @@ $("#search-button").on("click", function()  {
     }).then(function(response){
         console.log(response)
         console.log(response.name)
-        
-
         console.log(response.wind.speed)
+
 
 
     })
