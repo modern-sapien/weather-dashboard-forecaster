@@ -11,10 +11,14 @@ The assignment is to create a weather site
     the search then populates into a div with it's name in the history
 
 * Tracks History
+    stored in local storage as an object with array values
+    
     appended divs of previous search history have a clickable functionality similar to search, only THEY DO NOT LEAD TO more population of history. 
 
 * UV index for current day  is in a color block that is dependent on favorable, moderate or severe conditions
     "red severe", "yellow moderate", "green is fair"
+
+* 5-day forecast is generated through loop
 
 * Icon representation of conditions
     Either URL link or have images in asset folder and assign a URL for "sunny", "partly cloudly", "thunderstorm", etc.
