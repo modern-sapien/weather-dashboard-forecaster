@@ -4,8 +4,11 @@ var currentDateText = $("#current-Day")
 var forecastDisplay = $("#current-forecast");
 var futureForecast = $("#future-forecast");
 
-var dateDisplay = (moment().format("DD-MM-YYYY"))
-console.log(dateDisplay)
+var dateDisplay = (moment().format("MM/DD/YYYY"))
+
+console.log(moment().add(10, 'days').calendar())
+
+
 
 $("#search-button").on("click", function()  {
     var searchVal = $("#city-search").val().trim();
@@ -78,9 +81,11 @@ $("#search-button").on("click", function()  {
                         dataType: "json"
                     }).then(function(response){
                         for (var i = 0; i < 5; i++) {
-                        console.log(response.list[i].main.temp);
-                        console.log(response.list[i].main.humidity);
-                        console.log(response.list[i].weather[0].icon);
+                        console.log(response)
+                        console.log(response.list[i].main.temp);         // FORECAST TEMP
+                        console.log(response.list[i].main.humidity);     // HUMIDITY
+                        console.log(response.list[i].weather[0].icon);   // ICON FOR WEATHER 
+                        console.log(response.list[i].dt_txt);
                         }
                         
 
