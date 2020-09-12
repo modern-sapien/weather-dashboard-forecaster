@@ -16,13 +16,12 @@ $("#search-button").on("click", function()  {
         method: "GET", 
         dataType: "json"
     }).then(function(response){
-        var cityLat = response.coord.lat;  // latitude   
-        var cityLon = response.coord.lon;   //longitude
-        var locationTot = "lat="+ cityLat + "&lon=" + cityLon; //what the entry for the API request string is
+        var cityLat = response.coord.lat;
+        var cityLon = response.coord.lon;
+        var locationTot = "lat="+ cityLat + "&lon=" + cityLon; 
+        // CURRENT CITY     
         var cityName = (response.name)
-        console.log(cityName) // 1. city name
-
-        var mainLine = $("<h1>");       // creation of h1 element that displays city name
+        var mainLine = $("<h1>");       
         mainLine.text(cityName + " " + dateDisplay);
         forecastDisplay.append(mainLine);
 
@@ -33,32 +32,46 @@ $("#search-button").on("click", function()  {
             }).then(function(response){
                 console.log(response);
 
-                var currentTemp = response.current.temp // current temp
-                var h2Temp = $("<h2>");     //creation of h2 subheading
-                h2Temp.text("Temperature " + currentTemp + " °F");
-                mainLine.append(h2Temp);
+                //CURRENT TEMP ========================
+                var currentTemp = response.current.temp 
+                var h3Temp = $("<h3>");     //creation of h2 subheading
+                h3Temp.addClass("py-2");
+                h3Temp.text("Temperature " + currentTemp + " °F");
+                mainLine.append(h3Temp);
+                // HUMIDITY ===================================
+                var currentHumidity = response.current.humidity;
+                var h3Humidity = $("<h3>");
+                h3Humidity.addClass("py-2");
+                h3Humidity.text("Humidity:  " + currentHumidity);
+                mainLine.append(h3Humidity);
 
-                var uvIndex = response.current.uvi
+                // WIND ===================================
+                var currentWind = response.current.wind_speed;
+                var h3Wind = $("<h3>");
+                h3Wind.addClass("py-2");
+                h3Wind.text("Wind Speed:  " + currentWind + "  MPH");
+                mainLine.append(h3Wind);
 
-                var rowUvIndex = $("<div>");    //created a row so the UV content can all exist on the same line
-                rowUvIndex.addClass("row pl-3")
+
+                // UV INDEX ========================
+                var uvIndex = response.current.uvi  
+                var rowUvIndex = $("<div>");
+                rowUvIndex.addClass("row pl-3 py-2")
                 mainLine.append(rowUvIndex);
-                
+                    //LEFT SIDE
                 var h3UvIndex1 = $("<h3>");
                 h3UvIndex1.text("UV Index:    ");
                 rowUvIndex.append(h3UvIndex1);
-
+                    //RIGHT SIDE
                 var h4UvIndex2 = $("<h4>");
                 h4UvIndex2.text(uvIndex);
-                h4UvIndex2.addClass("altTest ml-2")
+                h4UvIndex2.addClass("altTest ml-2");
+                // need to create an IF statement here for determing class & checking documentation for the display 
                 rowUvIndex.append(h4UvIndex2);
 
-                console.log(response.current.uvi) // UV index
-                console.log(response.current.humidity) // humidity
                 console.log(response.current.weather[0].icon) // icon display
                 
                 
-
 
             });
     });
