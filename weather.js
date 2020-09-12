@@ -15,7 +15,9 @@ function searchFunction() {
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchVal + "&appid=fe5d52c1ddca1663f39aaaddd939123d",
         type: "GET", 
         dataType: "json"
-    })
+    }).then(response){
+        
+    }
 }
 
     // fe5d52c1ddca1663f39aaaddd939123d
