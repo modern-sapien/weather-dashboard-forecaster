@@ -77,12 +77,13 @@ $("#search-button").on("click", function()  {
                         method: "GET", 
                         dataType: "json"
                     }).then(function(response){
-                        console.log(response.list[0].main.temp)
-                        console.log(response.list[0].main.humidity)
-                        console.log(response.list[0].weather.icon)
-                        console.log(response)
-                        console.log(response)
-                        console.log(response)
+                        for (var i = 0; i < 5; i++) {
+                        console.log(response.list[i].main.temp);
+                        console.log(response.list[i].main.humidity);
+                        console.log(response.list[i].weather[0].icon);
+                        }
+                        
+
                     });
 
 
