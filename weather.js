@@ -14,17 +14,15 @@ $("#search-button").on("click", function()  {
         method: "GET", 
         dataType: "json"
     }).then(function(response){
-        console.log(response.coord.lat); // latitude
-        console.log(response.coord.lon);   // longitidunal
-        
-        var cityLat = response.coord.lat;
-        var cityLon = response.coord.lon;
-        var locationTot = "lat="+ cityLat + "&lon=" + cityLon;
+        var cityLat = response.coord.lat;  // latitude   
+        var cityLon = response.coord.lon;   //longitude
+        var locationTot = "lat="+ cityLat + "&lon=" + cityLon; //what the entry for the API request string is
+        var cityName = (response.name)
+        console.log(cityName) // 1. city name
 
-        console.log(response.name) // 1. city name
-        console.log(cityLat);
-        console.log(cityLon);
-        console.log(locationTot)
+        var mainLine = $("<h1>");
+        mainLine.text(cityName);
+        forecastDisplay.append(mainLine);
 
             $.ajax({
                 url: "https://api.openweathermap.org/data/2.5/onecall?" + locationTot + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
