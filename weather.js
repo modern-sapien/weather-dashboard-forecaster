@@ -16,6 +16,8 @@ $("#search-button").on("click", function()  {
         method: "GET", 
         dataType: "json"
     }).then(function(response){
+        forecastDisplay.empty();
+        futureForecast.empty();
         console.log(response)
         var cityLat = response.coord.lat;
         var cityLon = response.coord.lon;
@@ -30,6 +32,7 @@ $("#search-button").on("click", function()  {
                 method: "GET", 
                 dataType: "json"
             }).then(function(response){
+                
                 console.log(response);
                 //CURRENT TEMP ===========
                 var currentTemp = response.current.temp 
