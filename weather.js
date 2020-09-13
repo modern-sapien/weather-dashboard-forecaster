@@ -34,7 +34,6 @@ $("#search-button").on("click", function()  {
                 dataType: "json"
             }).then(function(response){
                 console.log(response);
-
                 //CURRENT TEMP ========================
                 var currentTemp = response.current.temp 
                 var h3Temp = $("<h3>");     //creation of h2 subheading
@@ -55,7 +54,6 @@ $("#search-button").on("click", function()  {
                 h3Wind.text("Wind Speed:  " + currentWind + "  MPH");
                 mainLine.append(h3Wind);
 
-
                 // UV INDEX ========================
                 var uvIndex = response.current.uvi  
                 var rowUvIndex = $("<div>");
@@ -75,23 +73,26 @@ $("#search-button").on("click", function()  {
                 console.log(response.current.weather[0].icon) // icon display
                 
                 
-                    $.ajax({
-                        url: "https://api.openweathermap.org/data/2.5/forecast?" + locationTot + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
-                        method: "GET", 
-                        dataType: "json"
-                    }).then(function(response){
-                        for (var i = 0; i < 5; i++) {
-                        
-                        
-                        console.log(response)
-                        console.log(response.list[i].main.temp);         // FORECAST TEMP
-                        console.log(response.list[i].main.humidity);     // HUMIDITY
-                        console.log(response.list[i].weather[0].icon);   // ICON FOR WEATHER 
-                        console.log(response.list[i].dt_txt);
-                        }
+                    // $.ajax({
+                    //     url: "https://api.openweathermap.org/data/2.5/forecast?" + locationTot + "&cnt=5&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
+                    //     method: "GET", 
+                    //     dataType: "json"
+                    // }).then(function(response){
+                    //     for (var i = 0; i < 5; i++) {
+                                                
+                    //     console.log(response)
+                    //     for (tLoop = 0; tLoop < 8; tLoop++)
+                    //     {
+
+                    //     }
+                    //     console.log(response.list[i].main.temp);         // FORECAST TEMP
+                    //     console.log(response.list[i].main.humidity);     // HUMIDITY
+                    //     console.log(response.list[i].weather[0].icon);   // ICON FOR WEATHER 
+                    //     console.log(response.list[i].dt_txt);
+                    //     }
                         
 
-                    });
+                    // });
 
 
             });
