@@ -7,13 +7,10 @@ var futureForecast = $("#future-forecast");
 var dateDisplay = (moment().format("MM/DD/YYYY"))
 
 console.log(moment().add(10, 'days').calendar())
-
 // substring(0, 10);
 
 $("#search-button").on("click", function()  {
     var searchVal = $("#city-search").val().trim();
-    
-    
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
         method: "GET", 
@@ -28,33 +25,31 @@ $("#search-button").on("click", function()  {
         var mainLine = $("<h1>");
         mainLine.text(cityName + " " + dateDisplay);
         forecastDisplay.append(mainLine);
-
             $.ajax({
                 url: "https://api.openweathermap.org/data/2.5/onecall?" + locationTot + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
                 method: "GET", 
                 dataType: "json"
             }).then(function(response){
                 console.log(response);
-                //CURRENT TEMP ========================
+                //CURRENT TEMP ===========
                 var currentTemp = response.current.temp 
                 var h3Temp = $("<h3>");     //creation of h2 subheading
                 h3Temp.addClass("py-2");
                 h3Temp.text("Temperature " + currentTemp + " °F");
                 mainLine.append(h3Temp);
-                // HUMIDITY ===================================
+                // HUMIDITY ============
                 var currentHumidity = response.current.humidity;
                 var h3Humidity = $("<h3>");
                 h3Humidity.addClass("py-2");
                 h3Humidity.text("Humidity:  " + currentHumidity);
                 mainLine.append(h3Humidity);
-                // WIND ===================================
+                // WIND ===========
                 var currentWind = response.current.wind_speed;
                 var h3Wind = $("<h3>");
                 h3Wind.addClass("py-2");
                 h3Wind.text("Wind Speed:  " + currentWind + "  MPH");
                 mainLine.append(h3Wind);
-
-                // UV INDEX ========================
+                // UV INDEX ==============
                 var uvIndex = response.current.uvi  
                 var rowUvIndex = $("<div>");
                 rowUvIndex.addClass("row pl-3 py-2")
@@ -80,20 +75,20 @@ $("#search-button").on("click", function()  {
                 var dailyLowTemp = response.daily[i].temp.min;
                 var dailyHighTemp = response.daily[i].temp.max;
                 var dailyAvg = (dailyLowTemp + dailyHighTemp) / 2;
-                
+                var dailyDate = moment().add((i+1), "days").format("M/D/YYYY");
                 // FORECAST DIVs =============
                 var foreCastDiv = $("<div>");
-                foreCastDiv.addClass("altTest ml-0 mr-3 px-2 py-2 col-2-sm");
-                futureForecast.append(foreCastDiv)
-                // Subheading Dates ==========
+                foreCastDiv.addClass("altTest m-1 px-1 col-2-sm");
+                futureForecast.append(foreCastDiv);
+                // FORECAST Dates ==========
                 var h5Lower = $("<h5>");
-                h5Lower.text("weather " + i);
+                h5Lower.text(dailyDate);
                 h5Lower.addClass("altTest");
-                foreCastDiv.append(h5Lower)
-                // Weather Icon Forecast ==========
-                var iconLower = $("<div>"); //create variable for img URL & ref
-                iconLower.text("image");    //replace text with .attr("src", asdlkflaksdjf)
-                foreCastDiv.append(iconLower)
+                foreCastDiv.append(h5Lower);
+                // Weather Icon Forecast =========
+                var iconLower = $("<img>"); //create variable for img URL & ref
+                iconLower.attr("src", "http://openweathermap.org/img/wn/"+ dailyIcon + "@2x.png");    //replace text with .attr("src", asdlkflaksdjf)
+                foreCastDiv.append(iconLower);
                 // Temp Forecast =========
                 var pLowerTemp = $("<p>");
                 pLowerTemp.text("Temp: " + dailyAvg + " °F");
