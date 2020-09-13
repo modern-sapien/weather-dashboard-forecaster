@@ -8,23 +8,24 @@ var dateDisplay = (moment().format("MM/DD/YYYY"))
 
 console.log(moment().add(10, 'days').calendar())
 
-
+// substring(0, 10);
 
 $("#search-button").on("click", function()  {
     var searchVal = $("#city-search").val().trim();
-    console.log("thanks amiel"); 
- 
+    
+    
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
         method: "GET", 
         dataType: "json"
     }).then(function(response){
+        console.log(response)
         var cityLat = response.coord.lat;
         var cityLon = response.coord.lon;
         var locationTot = "lat="+ cityLat + "&lon=" + cityLon; 
         // CURRENT CITY     
-        var cityName = (response.name)
-        var mainLine = $("<h1>");       
+        var cityName = (response.name);
+        var mainLine = $("<h1>");
         mainLine.text(cityName + " " + dateDisplay);
         forecastDisplay.append(mainLine);
 
@@ -46,7 +47,6 @@ $("#search-button").on("click", function()  {
                 h3Humidity.addClass("py-2");
                 h3Humidity.text("Humidity:  " + currentHumidity);
                 mainLine.append(h3Humidity);
-
                 // WIND ===================================
                 var currentWind = response.current.wind_speed;
                 var h3Wind = $("<h3>");
@@ -104,28 +104,8 @@ $("#search-button").on("click", function()  {
                 pLowerHumidity.text("Humidity: " + dailyHumidity + "%");
                 pLowerHumidity.addClass("altTest my-1");
                 foreCastDiv.append(pLowerHumidity)
-                
                 }
-                    // $.ajax({
-                    //     url: "https://api.openweathermap.org/data/2.5/forecast?" + locationTot + "&cnt=5&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
-                    //     method: "GET", 
-                    //     dataType: "json"
-                    // }).then(function(response){
-                    //     for (var i = 0; i < 5; i++) {
-                                                
-                    //     console.log(response)
-                    //     for (tLoop = 0; tLoop < 8; tLoop++)
-                    //     {
-
-                    //     }
-                    //     console.log(response.list[i].main.temp);         // FORECAST TEMP
-                    //     console.log(response.list[i].main.humidity);     // HUMIDITY
-                    //     console.log(response.list[i].weather[0].icon);   // ICON FOR WEATHER 
-                    //     console.log(response.list[i].dt_txt);
-                    //     }
-                        
-
-                    // });
+                
 
 
             });
