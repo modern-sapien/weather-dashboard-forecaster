@@ -71,8 +71,24 @@ $("#search-button").on("click", function()  {
                 rowUvIndex.append(h4UvIndex2);
 
                 console.log(response.current.weather[0].icon) // icon display
+
+                //FOR LOOP for Bottom Container Content
+                for (i = 0; i < 5; i ++) {
+                // Forecast Temp Average
                 
+                var dailyLowTemp = response.daily[i].temp.min
+                var dailyHighTemp = response.daily[i].temp.max
+                console.log(dailyLowTemp + " THIS IS THE LOW")
+                console.log(dailyHighTemp + " THIS IS THE HIGH")
+
+                var foreCastDiv = $("<div>");
+                foreCastDiv.text("weather " + i);
                 
+                foreCastDiv.addClass("altTest mx-4 px-3 py-3 col-2-sm");
+                futureForecast.append(foreCastDiv)
+                    
+                
+                }
                     // $.ajax({
                     //     url: "https://api.openweathermap.org/data/2.5/forecast?" + locationTot + "&cnt=5&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
                     //     method: "GET", 
