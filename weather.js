@@ -74,19 +74,36 @@ $("#search-button").on("click", function()  {
 
                 //FOR LOOP for Bottom Container Content
                 for (i = 0; i < 5; i ++) {
-                // Forecast Temp Average
+                // for Loop Local variabbles ====================
+                var dailyIcon = response.daily[i].weather[0].icon;
+                var dailyHumidity = response.daily[i].humidity;
+                var dailyLowTemp = response.daily[i].temp.min;
+                var dailyHighTemp = response.daily[i].temp.max;
+                var dailyAvg = (dailyLowTemp + dailyHighTemp) / 2;
                 
-                var dailyLowTemp = response.daily[i].temp.min
-                var dailyHighTemp = response.daily[i].temp.max
-                console.log(dailyLowTemp + " THIS IS THE LOW")
-                console.log(dailyHighTemp + " THIS IS THE HIGH")
-
+                // FORECAST DIVs =============
                 var foreCastDiv = $("<div>");
-                foreCastDiv.text("weather " + i);
-                
-                foreCastDiv.addClass("altTest mx-4 px-3 py-3 col-2-sm");
+                foreCastDiv.addClass("altTest ml-0 mr-3 px-2 py-2 col-2-sm");
                 futureForecast.append(foreCastDiv)
-                    
+                // Subheading Dates ==========
+                var h5Lower = $("<h5>");
+                h5Lower.text("weather " + i);
+                h5Lower.addClass("altTest");
+                foreCastDiv.append(h5Lower)
+                // Weather Icon Forecast ==========
+                var iconLower = $("<div>"); //create variable for img URL & ref
+                iconLower.text("image");    //replace text with .attr("src", asdlkflaksdjf)
+                foreCastDiv.append(iconLower)
+                // Temp Forecast =========
+                var pLowerTemp = $("<p>");
+                pLowerTemp.text("Temp: " + dailyAvg + " °F");
+                pLowerTemp.addClass("altTest my-1");
+                foreCastDiv.append(pLowerTemp)
+                // Humidity Forecast ========
+                var pLowerHumidity = $("<p>");
+                pLowerHumidity.text("Humidity: " + dailyHumidity + "%");
+                pLowerHumidity.addClass("altTest my-1");
+                foreCastDiv.append(pLowerHumidity)
                 
                 }
                     // $.ajax({
@@ -137,10 +154,3 @@ $("#search-button").on("click", function()  {
 
 
 // fe5d52c1ddca1663f39aaaddd939123d
-
-    // // By city name
-
-    // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
-
-    // // "cnt" == number of days returned 1 to 16
-    // api.openweathermap.org/data/2.5/forecast/daily?q={city name}&cnt={cnt}&appid={your api key}
