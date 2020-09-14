@@ -1,7 +1,9 @@
 .always-cloudy {
     color: whitesmoke;
-
+    text-shadow: 2px 2px black;
 }
+
+
 body {
     background: rgb(219, 219, 219);
     color: rgb(49, 49, 49);
