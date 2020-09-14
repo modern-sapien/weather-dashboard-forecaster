@@ -16,34 +16,46 @@
     </head>
     <body>
 
-        <nav class= "nav navbar py-4 bg-dark text-center">
+        <nav class= "nav navbar bg-dark text-center">
             <div class="container d-flex justify-content-center"">
-                <h1 class="always-cloudy px-3">WEATHER.dash </h1> </nav>
+                <h3 class="always-cloudy mt-2">WEATHER - </h3> </nav>
             </div>
 
 
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3 search test">
+                    <div class="col-sm-2 mt-5">
+                        <div class="row">
+                            <div class="col-sm-12">
                         <h5>Search For a City</h5>
                         <input id="city-search" type="text">
-                            <br><br>
-                        <button id="search-button">SEARCH</button>
+                            <br>
+                        <button class="mt-2" id="search-button">SEARCH</button>
                     </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="col-sm-12" id="left-container">
+                            </div>
+                        </div>
+                    </div>
+                
             
-                <div class="col-sm-9 test container">
-                <div class="row" id="current-forecast">              
+                <div class="col-sm-9 mt-5 container">
+                <div class="row" id="current-forecast">   
+                    <h3 class=" col-sm-12">All Your Weather Information</h3>
+                    <br>
+                    <h4 class="mt-1 col-sm-12">is only a few keystrokes away</h4>          
                   </div>
 
                   <span></span>
 
-                <div class="row test" id="future-forecast">
+                <div class="row" id="future-forecast">
                   </div>
                 </div>
             </div>
-        </div>
-
+</div>
         </main>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

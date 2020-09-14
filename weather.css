@@ -1,5 +1,10 @@
 .always-cloudy {
-    color: white;
+    color: whitesmoke;
+
+}
+body {
+    background: rgb(219, 219, 219);
+    color: rgb(49, 49, 49);
 }
 
 .test {
@@ -8,6 +13,39 @@
 }
 
 .altTest {
-    background: blue;
+    background: rgb(0, 0, 182);
     color: white;
+    box-shadow: 4px 4px 5px grey;
+}
+
+/* UV CLASSES */
+.extremeUv {
+    background: blueviolet;
+    color: white;
+    font-weight: bold;
+}
+
+.veryHighUv {
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.highUv {
+    background: orange;
+    color: black;
+    font-weight: bold;
+}
+
+.moderateUv {
+    background: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+.lowUv {
+    background: green;
+    color: blanchedalmond;
+    font-weight: bold;
 }

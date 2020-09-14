@@ -3,7 +3,7 @@ $(document).ready(function() {
 var currentDateText = $("#current-Day")
 var forecastDisplay = $("#current-forecast");
 var futureForecast = $("#future-forecast");
-
+var leftContainer = $("#left-container");
 var dateDisplay = (moment().format("MM/DD/YYYY"))
 
 console.log(moment().add(10, 'days').calendar())
@@ -11,6 +11,14 @@ console.log(moment().add(10, 'days').calendar())
 
 $("#search-button").on("click", function()  {
     var searchVal = $("#city-search").val().trim();
+    console.log(searchVal)
+    
+    var pastSearchBtn = $("<div>");
+    pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left");
+    pastSearchBtn.text(searchVal);
+    leftContainer.append(pastSearchBtn)
+
+
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
         method: "GET", 
@@ -35,7 +43,7 @@ $("#search-button").on("click", function()  {
                 
                 console.log(response);
                 //CURRENT TEMP ===========
-                var currentTemp = response.current.temp 
+                var currentTemp = Math.floor(response.current.temp) 
                 var h3Temp = $("<h3>");     //creation of h2 subheading
                 h3Temp.addClass("py-2");
                 h3Temp.text("Temperature " + currentTemp + " °F");
@@ -64,7 +72,12 @@ $("#search-button").on("click", function()  {
                     //RIGHT SIDE
                 var h4UvIndex2 = $("<h4>");
                 h4UvIndex2.text(uvIndex);
-                h4UvIndex2.addClass("altTest ml-2");
+                if (uvIndex <= 2)  {h4UvIndex2.addClass("lowUv")}
+                else if (uvIndex <= 5)  {h4UvIndex2.addClass("moderateUv")}
+                else if (uvIndex <= 7)  {h4UvIndex2.addClass("highUv")}
+                else if (uvIndex <= 10) {h4UvIndex2.addClass("veryHighUv")}
+                else h4UvIndex2.addClass("extremeUv");
+                h4UvIndex2.addClass("ml-2");
                 // need to create an IF statement here for determing class & checking documentation for the display 
                 rowUvIndex.append(h4UvIndex2);
 
@@ -77,7 +90,7 @@ $("#search-button").on("click", function()  {
                 var dailyHumidity = response.daily[i].humidity;
                 var dailyLowTemp = response.daily[i].temp.min;
                 var dailyHighTemp = response.daily[i].temp.max;
-                var dailyAvg = (dailyLowTemp + dailyHighTemp) / 2;
+                var dailyAvg = Math.floor((dailyLowTemp + dailyHighTemp) / 2);
                 var dailyDate = moment().add((i+1), "days").format("M/D/YYYY");
                 // FORECAST DIVs =============
                 var foreCastDiv = $("<div>");
@@ -86,7 +99,6 @@ $("#search-button").on("click", function()  {
                 // FORECAST Dates ==========
                 var h5Lower = $("<h5>");
                 h5Lower.text(dailyDate);
-                h5Lower.addClass("altTest");
                 foreCastDiv.append(h5Lower);
                 // Weather Icon Forecast =========
                 var iconLower = $("<img>"); //create variable for img URL & ref
@@ -95,12 +107,12 @@ $("#search-button").on("click", function()  {
                 // Temp Forecast =========
                 var pLowerTemp = $("<p>");
                 pLowerTemp.text("Temp: " + dailyAvg + " °F");
-                pLowerTemp.addClass("altTest my-1");
+                pLowerTemp.addClass("my-1");
                 foreCastDiv.append(pLowerTemp)
                 // Humidity Forecast ========
                 var pLowerHumidity = $("<p>");
                 pLowerHumidity.text("Humidity: " + dailyHumidity + "%");
-                pLowerHumidity.addClass("altTest my-1");
+                pLowerHumidity.addClass("my-1");
                 foreCastDiv.append(pLowerHumidity)
                 }
                 
@@ -108,12 +120,7 @@ $("#search-button").on("click", function()  {
 
             });
     });
-
-
-
-
-
-});
+}); //search click
 
 
 });
