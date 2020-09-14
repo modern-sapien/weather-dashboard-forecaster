@@ -27,7 +27,7 @@ function displayCityKey() {
     else {
     var userSearchKeyItem = localStorage.getItem(userSearchKey[j])
     var pastSearchBtn = $("<div>");
-    pastSearchBtn.addClass("mt-3 ml-0 btn btn-dark text-left created-btn");
+    pastSearchBtn.addClass("mt-3 ml-0 btn btn-dark text-left created-btn col-12");
     pastSearchBtn.attr("data-type", userSearchKey[j])
     pastSearchBtn.text(userSearchKeyItem.toUpperCase());
     leftContainer.append(pastSearchBtn);
@@ -48,7 +48,7 @@ function displayCityKey() {
         console.log($(this).attr("data-type"));
         leftSearchVal = ($(this).attr("data-type"))
      $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + leftSearchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + leftSearchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
         method: "GET", 
         dataType: "json"
     }).then(function(response){
