@@ -14,15 +14,29 @@ console.log(moment().add(10, 'days').calendar())
 // checks to see if there are any entries in local storage
 var parsedUserSearchArray = JSON.parse(localStorage.getItem("userSearch"))
 console.log(parsedUserSearchArray);
-for (var j = 0; j < parsedUserSearchArray.length; j++) {
 
+displayCityKey();
+
+function displayCityKey() {
+    var userSearchKey = Object.keys(localStorage); //array of strings
+    console.log(userSearchKey)
+    for (var j = 0; j < userSearchKey.length; j++) {
+    if (userSearchKey < 0) {
+    return} 
+    else {
+    var userSearchKeyItem = localStorage.getItem(userSearchKey[j])
     var pastSearchBtn = $("<div>");
     pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left created-btn");
-    pastSearchBtn.text(parsedUserSearchArray[j]);
+    pastSearchBtn.text(userSearchKeyItem);
     leftContainer.append(pastSearchBtn);
-
-
 }
+}}
+    
+leftContainer.on("click", function(){
+ console.log("i've been clicked")
+
+})
+
 
 $("#search-button").on("click", function()  {
     var searchVal = $("#city-search").val().trim();
@@ -33,11 +47,7 @@ $("#search-button").on("click", function()  {
     pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left created-btn");
     pastSearchBtn.text(searchVal);
     leftContainer.append(pastSearchBtn);
-
-    userSearchArray.push({
-        cityName: searchVal
-    });
-    localStorage.setItem("userSearch", JSON.stringify(userSearchArray));
+    localStorage.setItem(searchVal, searchVal);
 
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
