@@ -4,7 +4,7 @@ var currentDateText = $("#current-Day")
 var forecastDisplay = $("#current-forecast");
 var futureForecast = $("#future-forecast");
 var leftContainer = $("#left-container");
-var dateDisplay = (moment().format("MM/DD/YYYY"))
+var dateDisplay = (moment().format("MM/DD/YYYY"));
 
 var userSearchArray = []; //for storing keys for the object
 
@@ -18,7 +18,7 @@ console.log(parsedUserSearchArray);
 displayCityKey();
 
 function displayCityKey() {
-    var userSearchKey = Object.keys(localStorage); //array of strings
+    var userSearchKey = Object.keys(localStorage); //array of strings // keys or values
     console.log(userSearchKey)
     for (var j = 0; j < userSearchKey.length; j++) {
     if (userSearchKey < 0) {
@@ -29,13 +29,11 @@ function displayCityKey() {
     pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left created-btn");
     pastSearchBtn.text(userSearchKeyItem);
     leftContainer.append(pastSearchBtn);
-}
-}}
-    
-leftContainer.on("click", function(){
- console.log("i've been clicked")
-
-})
+    }
+    }}
+    leftContainer.on("click", function(){
+    console.log("i've been clicked")
+    })
 
 
 $("#search-button").on("click", function()  {
