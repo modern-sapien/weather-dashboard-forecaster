@@ -6,18 +6,38 @@ var futureForecast = $("#future-forecast");
 var leftContainer = $("#left-container");
 var dateDisplay = (moment().format("MM/DD/YYYY"))
 
+var userSearchArray = []; //for storing keys for the object
+
 console.log(moment().add(10, 'days').calendar())
 // substring(0, 10);
+
+// checks to see if there are any entries in local storage
+var parsedUserSearchArray = JSON.parse(localStorage.getItem("userSearch"))
+console.log(parsedUserSearchArray);
+for (var j = 0; j < parsedUserSearchArray.length; j++) {
+
+    var pastSearchBtn = $("<div>");
+    pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left created-btn");
+    pastSearchBtn.text(parsedUserSearchArray[j]);
+    leftContainer.append(pastSearchBtn);
+
+
+}
 
 $("#search-button").on("click", function()  {
     var searchVal = $("#city-search").val().trim();
     console.log(searchVal)
-    
-    var pastSearchBtn = $("<div>");
-    pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left");
-    pastSearchBtn.text(searchVal);
-    leftContainer.append(pastSearchBtn)
 
+    // creates new button
+    var pastSearchBtn = $("<div>");
+    pastSearchBtn.addClass("col-sm-12 mt-3 ml-0 btn btn-dark text-left created-btn");
+    pastSearchBtn.text(searchVal);
+    leftContainer.append(pastSearchBtn);
+
+    userSearchArray.push({
+        cityName: searchVal
+    });
+    localStorage.setItem("userSearch", JSON.stringify(userSearchArray));
 
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchVal + "&units=imperial&appid=fe5d52c1ddca1663f39aaaddd939123d",
