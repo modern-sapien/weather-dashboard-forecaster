@@ -1,8 +1,11 @@
 .always-cloudy {
     color: whitesmoke;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 3px black;
 }
 
+.nav {
+    height: 60px;
+}
 
 body {
     background: rgb(219, 219, 219);
@@ -14,7 +17,7 @@ body {
     border: dotted black;
 }
 
-.altTest {
+.altTest, .created-btn {
     background: rgb(0, 0, 182);
     color: white;
     box-shadow: 4px 4px 5px grey;
