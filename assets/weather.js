@@ -23,6 +23,8 @@
         // CLEAR BUTTON FUNCTIONALITY
         // ==========================
         clearBtn.on("click", function()  {
+        forecastDisplay.empty();
+        futureForecast.empty();
         leftContainer.empty();
         localStorage.clear();
         });
