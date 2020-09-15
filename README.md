@@ -1,6 +1,12 @@
 # WEATHER DASHBOARD FORECASTER
 
-![Test Image 1](assets/weatherdash.png)
+LIVE SITE
+https://modern-sapien.github.io/weather-dashboard-forecaster/
+
+GITHUB REPOSITORY
+https://github.com/modern-sapien/weather-dashboard-forecaster
+
+![WEATHERDASH SCREENSHOT](assets/weatherdash.png)
 
 ## ASSIGNMENT
 
