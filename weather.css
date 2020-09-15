@@ -26,6 +26,7 @@ body {
 /* UV CLASSES */
 .extremeUv {
     background: blueviolet;
+    text-shadow: 2px 2px black;
     color: white;
     font-weight: bold;
 }
@@ -33,24 +34,28 @@ body {
 .veryHighUv {
     background: red;
     color: white;
+    text-shadow: 2px 2px black;
     font-weight: bold;
     padding: 2px;
 }
 
 .highUv {
     background: orange;
+    text-shadow: 2px 1px grey;
     color: black;
     font-weight: bold;
 }
 
 .moderateUv {
     background: yellow;
+    text-shadow: 2px 2px white;
     color: black;
     font-weight: bold;
 }
 
 .lowUv {
     background: green;
+    text-shadow: 2px 2px black;
     color: blanchedalmond;
     font-weight: bold;
 }
